@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<link rel="stylesheet" href="css/styles.css">
+<title>MindScore Test</title>
+</head>
+<body>
+<div id="app">
+    <div id="intro-page" class="intro-container">
+        <div style="text-align: center; margin-bottom: 20px;">
+            <img src="assets/img/LOGOMIND.png" alt="Mind Logo" style="max-height: 100px;">
+        </div>
+        <h1 style="color: var(--primary-color);">Découvrez votre profil financier avec le MindScore</h1>
+        
+        <p>Le MindScore Financier est un outil psychométrique fondé sur les avancées en neurosciences cognitives et en finance comportementale, conçu pour analyser votre manière d'aborder l'investissement, l'épargne et la gestion de votre patrimoine.</p>
+        
+        <p>Ce test vous aide à mieux comprendre votre rapport à l'argent, en s'appuyant sur <strong style="color: var(--primary-color);">4 grands types de fonctionnement du cerveau</strong>. En combinant ces approches, il génère jusqu'à <strong style="color: var(--primary-color);">64 combinaisons</strong> pour refléter votre façon unique de prendre des décisions financières.
+        
+        <h2 style="color: var(--primary-color);">Les 4 principaux quadrants financiers</h2>
+        
+        <div class="styles-grid">
+            <div class="style-card" style="background-color: #f8f9fa; padding: 20px; border-radius: 15px; margin-bottom: 15px; box-shadow: 0 2px 8px rgba(0,0,0,0.1);">
+                <h3 style="font-size: 1.1em;">Cortical Gauche (Investisseur Analytique)</h3>
+                <p>Rigueur, précision, rationalité. Une approche méthodique basée sur les données et l'analyse factuelle des opportunités.</p>
+            </div>
+            
+            <div class="style-card" style="background-color: #f8f9fa; padding: 20px; border-radius: 15px; margin-bottom: 15px; box-shadow: 0 2px 8px rgba(0,0,0,0.1);">
+                <h3 style="font-size: 1.1em;">Cortical Droit (Investisseur Visionnaire)</h3>
+                <p>Créativité, innovation, anticipation. Une vision avant-gardiste des marchés et une capacité à repérer les tendances émergentes.</p>
+            </div>
+            
+            <div class="style-card" style="background-color: #f8f9fa; padding: 20px; border-radius: 15px; margin-bottom: 15px; box-shadow: 0 2px 8px rgba(0,0,0,0.1);">
+                <h3 style="font-size: 1.1em;">Limbique Gauche (Investisseur Structuré)</h3>
+                <p>Organisation, stabilité, discipline. Une priorité donnée à la sécurité, à la planification et à l'investissement méthodique.</p>
+            </div>
+            
+            <div class="style-card" style="background-color: #f8f9fa; padding: 20px; border-radius: 15px; margin-bottom: 15px; box-shadow: 0 2px 8px rgba(0,0,0,0.1);">
+                <h3 style="font-size: 1.1em;">Limbique Droit (Investisseur Relationnel)</h3>
+                <p>Intuition, valeurs, éthique. Un fort besoin d'alignement entre vos investissements et vos convictions personnelles.</p>
+            </div>
+        </div>
+        
+        <div class="methodology" style="background-color: #f8f9fa; padding: 20px; border-radius: 15px; margin: 30px 0; text-align: left; box-shadow: 0 2px 8px rgba(0,0,0,0.1);">
+            <h3>Méthodologie</h3>
+            <ul>
+                <li>Le test comprend 22 questions, chacune avec 4 traits de personnalité.</li>
+                <li><strong style="color: var(--primary-color);">À chaque question, sélectionnez jusqu'à 3 traits qui vous décrivent le mieux.</strong></li>
+                <li>Le croisement des réponses permet de cartographier votre profil d'investisseur.</li>
+            </ul>
+        </div>
+
+        <div class="contact-form" style="display: flex; flex-wrap: wrap; gap: 30px; margin: 20px 0 30px;">
+    <div style="flex: 1; min-width: 200px;">
+        <label for="lastName" style="display: block; margin-bottom: 5px; color: var(--dark-text);">Nom</label>
+        <input type="text" id="lastName" style="width: 100%; padding: 10px; border-radius: 5px; border: 1px solid #ddd; background-color: #f5f5f5;">
+    </div>
+    <div style="flex: 1; min-width: 200px;">
+        <label for="firstName" style="display: block; margin-bottom: 5px; color: var(--dark-text);">Prénom</label>
+        <input type="text" id="firstName" style="width: 100%; padding: 10px; border-radius: 5px; border: 1px solid #ddd; background-color: #f5f5f5;">
+    </div>
+    <div style="flex: 1; min-width: 200px;">
+        <label for="email" style="display: block; margin-bottom: 5px; color: var(--dark-text);">E-mail</label>
+        <input type="email" id="email" style="width: 100%; padding: 10px; border-radius: 5px; border: 1px solid #ddd; background-color: #f5f5f5;">
+    </div>
+</div>
+
+<button onclick="demarrerPaiement()">Payer</button>
+
+    </div>
+    
+    <div id="test-page" style="display: none;">
+        <div class="main-header">
+           <img src="assets/img/LOGOMIND.png" alt="Mind Logo" style="height: 80px; margin-bottom: 15px;">
+            <h1>MindScore</h1>
+            <p>Découvrez votre profil cognitif et obtenez des recommandations personnalisées</p>
+        </div>
+        
+        <div class="progress">
+            <div class="progress-bar" id="progressBar"></div>
+        </div>
+        
+        <div class="question-container">
+            <h2>Question <span id="questionNumber">1</span>/22</h2>
+            <p id="questionText"></p>
+            <button id="playQuestionAudio" class="audio-question-button" onclick="playQuestionAudio()">
+                <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                    <path d="M12 2C6.48 2 2 6.48 2 12C2 17.52 6.48 22 12 22C17.52 22 22 17.1 22 16V4C22 2.9 21.1 2 20 2Z" fill="white"/>
+                </svg>
+            </button>
+            <audio id="questionAudio" style="display: none;"></audio>
+            <div class="options" id="options"></div>
+        </div>
+
+        <div class="navigation">
+            <button id="prevBtn" onclick="previousQuestion()" disabled>Précédent</button>
+            <button id="nextBtn" onclick="nextQuestion()">Suivant</button>
+        </div>
+        
+        <div class="assistant-container">
+            <div class="assistant-button" onclick="toggleChat()">
+                <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <path d="M20 6L18.29 8.29L13.41 13.17L9.41 9.17L2 16.59L3.41 18L9.41 12L13.41 16L19.71 9.71L22 12V6H20Z" fill="var(--primary-color)"/>
+                </svg>
+            </div>
+            <div class="chat-container" id="chatContainer">
+                <div class="chat-header">Assistant MindScore</div>
+                <div class="chat-messages" id="chatMessages">
+                    <div class="message bot-message">Bonjour ! Je suis votre assistant MindScore. Comment puis-je vous aider aujourd'hui ?</div>
+                </div>
+                <div class="chat-input">
+                    <input type="text" id="userInput" placeholder="Tapez votre message..." onkeypress="handleKeyPress(event)">
+                    <button onclick="sendMessage()">
+                        <svg width="16" height="16" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg">
+                            <path d="M15.707 7.293L1.707 0.293C1.434 0.156 1.118 0.138 0.833 0.243C0.548 0.348 0.320 0.565 0.2 0.85C0.080 1.135 0.079 1.458 0.198 1.744C0.316 2.030 0.543 2.249 0.827 2.356L10.587 6L0.827 9.644C0.543 9.751 0.316 9.970 0.198 10.256C0.079 10.542 0.080 10.865 0.2 11.15C0.320 11.435 0.548 11.652 0.833 11.757C1.118 11.862 1.434 11.844 1.707 11.707L15.707 4.707C15.937 4.592 16.121 4.404 16.232 4.173C16.343 3.941 16.374 3.678 16.321 3.427C16.267 3.175 16.131 2.949 15.935 2.786C15.739 2.623 15.494 2.532 15.24 2.529C15.395 2.526 15.548 2.491 15.688 2.426C15.827 2.362 15.95 2.270 16.045 2.158C16.141 2.045 16.209 1.914 16.244 1.773C16.279 1.631 16.281 1.484 16.249 1.341C16.217 1.199 16.152 1.066 16.059 0.951C15.966 0.837 15.847 0.743 15.711 0.675C15.574 0.608 15.423 0.57 15.271 0.564C15.119 0.558 14.966 0.585 14.824 0.641L14.707 0.707L15.707 7.293Z" fill="white"/>
+                    </svg>
+                </button>
+            </div>
+        </div>
+    </div>
+</div>
+<script src="https://js.stripe.com/v3/"></script>
+<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+<script src="js/questions.js"></script>
+<script src="js/app.js"></script>
+</body>
+</html>

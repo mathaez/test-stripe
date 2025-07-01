@@ -1,0 +1,17 @@
+{
+  "name": "mindscore",
+  "version": "1.0.0",
+  "description": "MindScore est un test psychométrique basé sur les neurosciences cognitives et la finance comportementale. Il identifie le profil d'investisseur dominant et propose une allocation personnalisée.",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "cors": "^2.8.5",
+    "express": "^5.1.0",
+    "stripe": "^18.2.1"
+  }
+}
